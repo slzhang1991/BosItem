@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="com.ssh.bos.entity">
+    <class name="SubArea" table="t_sub_area">
+        <!-- id属性 -->
+        <id name="id" column="id">
+            <generator class="uuid" />
+        </id>
+
+        <!-- 普通属性 -->
+        <property name="addressKey" column="address_key" />
+        <property name="startNum" column="start_num" />
+        <property name="endNum" column="end_num" />
+        <property name="single" column="single" />
+        <property name="position" column="position" />
+        
+        <!-- 对象属性 -->
+        <many-to-one name="region" class="Region" fetch="select" lazy="false">
+            <column name="region_id" />
+        </many-to-one>
+        
+        <many-to-one name="decidedZone" class="DecidedZone" fetch="select">
+            <column name="decided_zone_id" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

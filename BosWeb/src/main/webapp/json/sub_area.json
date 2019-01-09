@@ -1,0 +1,18 @@
+{
+	"total": 100,
+	"rows": [
+		{
+			"id": "bg001",
+			"region": {
+				"province": "北京",
+				"city": "北京",
+				"district": "朝阳区"
+			},
+			"addressKey": "朝阳北路",
+			"startNum": "1",
+			"endNum": "100",
+			"single": "0",
+			"position": "北京市 朝阳区 01路01号"
+		}
+	]
+}

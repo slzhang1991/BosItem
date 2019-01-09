@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="com.ssh.bos.entity">
+    <class name="Staff" table="t_staff">
+        <!-- id属性 -->
+        <id name="id" column="id">
+            <generator class="uuid" />
+        </id>
+
+        <!-- 普通属性 -->
+        <property name="name" column="name" />
+        <property name="telephone" column="telephone" />
+        <property name="hasPda" column="has_pda" />
+        <property name="delTag" column="del_tag" />
+        <property name="station" column="station" />
+        <property name="standard" column="standard" />
+        
+        <!-- 对象引用 -->
+        <set name="decidedZones" inverse="true">
+            <key column="staff_id" />
+            <one-to-many class="DecidedZone" />
+        </set>
+    </class>
+    
+    <query name="staff.delete">
+        UPDATE Staff SET delTag = '1' WHERE id = ?
+    </query>
+    
+    <query name="staff.restore">
+        UPDATE Staff SET delTag = '0' WHERE id = ?
+    </query>
+</hibernate-mapping>
